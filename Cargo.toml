@@ -1,0 +1,38 @@
+[package]
+name = "egui-plotter-3dchart"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+plotters = "0.3.5"
+egui = "0.23"
+eframe = "0.23"
+
+# Causes compile error below
+#egui-plotter = "0.3"
+#$ cargo build
+#    Updating crates.io index
+#   Compiling epaint v0.22.0
+#   Compiling egui v0.22.0
+#   Compiling egui-plotter v0.3.0
+#   Compiling egui-plotter-3dchart v0.1.0 (/home/wink/prgs/rust/myrepos/egui-plotter-3dchart)
+#error[E0107]: struct takes 0 generic arguments but 1 generic argument was supplied
+#   --> src/main.rs:22:12
+#    |
+#22  |     chart: Chart<()>,
+#    |            ^^^^^---- help: remove these generics
+#    |            |
+#    |            expected 0 generic arguments
+#    |
+#note: struct defined here, with 0 generic parameters
+#   --> /home/wink/.cargo/registry/src/index.crates.io-6f17d22bba15001f/egui-plotter-0.3.0/src/chart.rs:224:12
+#    |
+#224 | pub struct Chart {
+#    |            ^^^^^
+#
+#For more information about this error, try `rustc --explain E0107`.
+#error: could not compile `egui-plotter-3dchart` (bin "egui-plotter-3dchart") due to previous error
+
+egui-plotter = { git = "https://github.com/winksaville/egui-plotter.git", branch = "update-eframe-egui-to-0.23" }
